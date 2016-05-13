@@ -4,31 +4,31 @@ Type AHead Solr Auto Complete Tool
 Aim of this project to create auto-suggest feature for search application which enumerates all possiblities and maps them to find best choices. Final result will satisfy very demanding situations. 
 
 STEPS:
-Installations, Working with Core and Using Query
-Adding Req. Components
-Loopup Implementation
-Working With Multiple Dictionaries
-Context Filtering
-Testing Results
+*Installations, Working with Core and Using Query
+*Adding Req. Components
+*Loopup Implementation
+*Working With Multiple Dictionaries
+*Context Filtering
+*Testing Results
 
 Tools and Requirements:
-Apache Solr
-Java JDK
-Localhost
+*Apache Solr
+*Java JDK
+*Localhost
 
 Creatıng core
-`>> bin/solr create -c <core-name-here>
+`>> bin/solr create -c <core-name-here>`
 This will create a core which will be a workspace for us. Core includes documents.
 
 Modıfying schema:
 
-curl -X POST -H 'Content-type:application/json' --data-binary '{
+```curl -X POST -H 'Content-type:application/json' --data-binary '{
 "add-field":{
 "name":"cat",
 "type":"text_general",
 "indexed":"true",
 "stored":true }
-}' http://localhost:8983/solr/myCore/schema
+}' http://localhost:8983/solr/myCore/schema```
 
 We need to add fields to schema.xml (managed-schema.xml)
 
@@ -52,9 +52,9 @@ One more Step For Ngram Add this codes to managed-schema.xml
   </fieldType>
   
 
-## Run
+##Run
 
-`>> bin/solr start
+`>> bin/solr start`
 Then Run The Maven Project
 
 
