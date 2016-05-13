@@ -4,12 +4,14 @@ Type AHead Solr Auto Complete Tool
 Aim of this project to create auto-suggest feature for search application which enumerates all possiblities and maps them to find best choices. Final result will satisfy very demanding situations. 
 
 STEPS:
-*Installations, Working with Core and Using Query
-*Adding Req. Components
-*Loopup Implementation
-*Working With Multiple Dictionaries
-*Context Filtering
-*Testing Results
+
+
+1. Installations, Working with Core and Using Query:white_check_mark:
+2. Adding Req. Components:white_check_mark:
+3. Loopup Implementation:white_check_mark:
+4. Working With Multiple Dictionaries:white_check_mark:
+5. Context Filtering:white_check_mark:
+6. Testing Results:white_check_mark:
 
 Tools and Requirements:
 *Apache Solr
