@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Find The Best Film</title>
+<link
+href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+rel="stylesheet"></link>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+$(function() {
+var URL_PREFIX = "http://localhost:8983/solr/myFilms/select?q=Title:";
+
+
+
+var URL_SUFFIX = "&sort=Year+desc&wt=json";
+$("#searchBox").autocomplete({
+source : function(request, response) {
+var URL = URL_PREFIX + $("#searchBox").val() + URL_SUFFIX;
+$.ajax({
+url : URL,
+success : function(data) {
+var docs = JSON.stringify(data.response.docs);
+var jsonData = JSON.parse(docs);
+response($.map(jsonData, function(value, key) {
+	console.log(value);
+return {
+	
+label : value.Title  
+}
+}));
+},
+dataType : 'jsonp',
+jsonp : 'json.wrf'
+});
+},
+minLength : 1
+})
+});
+
+$(function() {
+
+	 var URL_PREFIX = "http://localhost:8983/solr/myFilms/select?q=Title:";
+
+	 var URL_MIDDLE = "OR title_ngram:";
+
+	 var URL_SUFFIX = "&sort=Year+desc&wt=json";
+
+	 $("#ngramBox").autocomplete(
+
+	 {
+
+	 source : function(request, response) {
+
+	 var searchString = "\"" + $("#ngramBox").val() + "\"";
+	 
+	 
+
+	 var URL = URL_PREFIX + searchString + URL_MIDDLE
+
+	 + searchString + URL_SUFFIX;
+
+	 $.ajax({
+
+	 url : URL,
+
+	 success : function(data) {
+
+	 var docs = JSON.stringify(data.response.docs);
+
+	 var jsonData = JSON.parse(docs);
+
+	 response($.map(jsonData, function(value, key) {
+
+	 return {
+
+	 label : value.Title
+
+	 }
+
+	 }));
+
+	 },
+
+	 dataType : 'jsonp',
+
+	 jsonp : 'json.wrf'
+
+	 });
+
+	 },
+
+	 minLength : 1
+
+	 })
+	 
+	 document.getElementById("myLink").innerHTML=URL;
+
+	 });
+	 
+
+</script>
+</head>
+
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+<body>
+
+
+<div id="page">
+
+    <h1>Solr Powered Site Search</h1>
+    
+    <form id="searchForm" method="post" action="http://localhost/mySearchApp/deneme/action.php">
+		<fieldset>
+        
+           	<input id="ngramBox" name="ngramBox"></input>
+            
+            <input type="submit" value="Submit" id="submitButton" />
+            
+            <div id="searchInContainer">
+                <input type="radio" name="check" value="site" id="searchSite" checked />
+                
+                <label for="searchSolr">Ara !</label>
+                
+                <input type="radio" name="check" value="site" id="searchSite" />
+                <label for="searchWeb">Web'de Ara !</label>
+                
+			</div>
+                        
+            <ul class="icons">
+                
+                <li class="videos" title="Video Search" data-searchType="video">Videos</li>
+            </ul>
+            
+        </fieldset>
+    </form>
+
+    <div id="resultsDiv"></div>
+    
+</div>
+
+
+<p class="credit"><a href="http://izzetcanyc.com">Powered by IzzetCan</a></p>
+    
+
+
+
+</body>
+</html>
