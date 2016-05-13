@@ -14,13 +14,17 @@ STEPS:
 6. Testing Results:white_check_mark:
 
 Tools and Requirements:
-*Apache Solr
-*Java JDK
-*Localhost
+
+
+* Apache Solr
+* Java JDK
+* Localhost
 
 Creatıng core
 `>> bin/solr create -c <core-name-here>`
-This will create a core which will be a workspace for us. Core includes documents.
+
+
+* This will create a core which will be a workspace for us. Core includes documents.
 
 Modıfying schema:
 
