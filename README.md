@@ -59,9 +59,10 @@ One more Step For Ngram Add this codes to managed-schema.xml
   ```
 
 ##Run
+* Add myFilms File to your Solr Server then
+`>> bin/solr start` 
 
-`>> bin/solr start`
-Then Run The Maven Project
+* Import Maven Project to Your Compiler(Supported by Tomcat)
 
 
 
