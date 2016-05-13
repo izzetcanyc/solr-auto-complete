@@ -39,10 +39,10 @@ Modıfying schema:
 We need to add fields to schema.xml (managed-schema.xml)
 
 Indexıng data:
-bin/post -c myCore filelocation(json,xml,csv)
+```bin/post -c myCore filelocation(json,xml,csv)```
 
 One more Step For Ngram Add this codes to managed-schema.xml
-
+```
 <field name="title_ngram" type="text_ngram" indexed="true" stored="true"/>
   <copyField source="Title" dest="title_ngram"/>
 
@@ -56,7 +56,7 @@ One more Step For Ngram Add this codes to managed-schema.xml
 		<filter class="solr.LowerCaseFilterFactory"/>
 	</analyzer>
   </fieldType>
-  
+  ```
 
 ##Run
 
